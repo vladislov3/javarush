@@ -1,0 +1,40 @@
+package com.javarush.task.pro.task03.task0305;
+
+import java.util.Scanner;
+
+/* 
+Три числа
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+
+        int one = keyboard.nextInt();
+        int two = keyboard.nextInt();
+        int three = keyboard.nextInt();
+
+        boolean a = (one == two);
+        boolean b = (two == three);
+        boolean c = (one == three);
+        boolean d = (a & b);
+
+        if (d) {
+            System.out.println(one + " " + two + " " + three);
+        } else {
+            if (a) {
+                System.out.println(one + " " + two);
+            } else {
+                if (b) {
+                    System.out.println(two + " " + three);
+                } else {
+                    if (c) {
+                        System.out.println(one + " " + three);
+                    }
+                }
+            }
+        }
+
+
+    }
+}
