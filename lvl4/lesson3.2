@@ -1,0 +1,36 @@
+package com.javarush.task.pro.task03.task0306;
+
+import java.util.Scanner;
+
+/* 
+Треугольник
+*/
+
+public class Solution {
+    private static final String TRIANGLE_EXISTS = "треугольник существует";
+    private static final String TRIANGLE_NOT_EXISTS = "треугольник не существует";
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        int x = keyboard.nextInt();
+        int y = keyboard.nextInt();
+        int z = keyboard.nextInt();
+
+        boolean god_one = (x < (y + z));
+        boolean god_two = (y < (x + z));
+        boolean god_three = (z < (x + y));
+
+        boolean not_one = (x >= (y + z));
+        boolean not_two = (y >= (x + z));
+        boolean not_three = (z >= (x + y));
+
+        if (god_one && god_two && god_three)
+            System.out.println(TRIANGLE_EXISTS);
+
+        if (not_one || not_two || not_three)
+            System.out.println(TRIANGLE_NOT_EXISTS);
+
+
+
+    }
+}
