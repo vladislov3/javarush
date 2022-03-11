@@ -1,0 +1,33 @@
+package com.javarush.task.pro.task05.task0505;
+
+import java.util.Scanner;
+
+/* 
+Reverse
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int firstNumber = sc.nextInt();
+
+        if (firstNumber > 0) {
+            int[] array = new int[firstNumber];
+            for (int i = 0; i < firstNumber; ) {
+                array[i] = sc.nextInt();
+                i++;
+            }
+            if (firstNumber % 2 == 0) {
+                for (int j = array.length - 1; j >= 0; j--) {
+                    System.out.println(array[j]);
+                }
+            } else {
+                for(int k = 0; k < array.length; k++) {
+                    System.out.println(array[k]);
+                }
+            }
+
+        }
+
+    }
+}
