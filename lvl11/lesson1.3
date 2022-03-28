@@ -1,0 +1,148 @@
+package com.javarush.task.pro.task09.task0908;
+
+import java.util.regex.Pattern;
+
+/* 
+Двоично-шестнадцатеричный конвертер
+*/
+
+public class Solution {
+
+    public static void main(String[] args) {
+        String binaryNumber = "1001110100001";
+        System.out.println("Двоичное число " + binaryNumber + " равно шестнадцатеричному числу " + toHex(binaryNumber));
+        String hexNumber = "9d0";
+        System.out.println("Шестнадцатеричное число " + hexNumber + " равно двоичному числу " + toBinary(hexNumber));
+    }
+
+    public static String toHex(String binaryNumber) {
+        String hexNumber = "";
+        if (binaryNumber == null) {
+            return hexNumber;
+        }
+        if (binaryNumber.matches("(?i).*[a-zа-я2-9].*"))
+            return hexNumber;
+        if (binaryNumber.matches("(?i).*[2-9].*"))
+            return hexNumber;
+
+        StringBuffer sb = new StringBuffer(binaryNumber);
+        StringBuffer added = new StringBuffer();
+        String result = "";
+        if ((binaryNumber.length() % 4) == 1) {
+            added.append("000").append(binaryNumber);
+        } else if (binaryNumber.length() % 4 == 2) {
+            added.append("00").append(binaryNumber);
+        } else if (binaryNumber.length() % 4 == 3) {
+            added.append("0").append(binaryNumber);
+        } else
+            added.append(binaryNumber);
+
+        for (int i = 0; i < added.length(); i += 4) {
+            hexNumber = added.substring(i, i + 4);
+            if (hexNumber.equals("0000")) {
+                result = result + "0";
+
+            } else if (hexNumber.equals("0001")) {
+                result = result + "1";
+
+            } else if (hexNumber.equals("0010")) {
+                result = result + "2";
+
+            } else if (hexNumber.equals("0011")) {
+                result = result + "3";
+
+            } else if (hexNumber.equals("0100")) {
+                result = result + "4";
+
+            } else if (hexNumber.equals("0101")) {
+                result = result + "5";
+
+            } else if (hexNumber.equals("0110")) {
+                result = result + "6";
+
+            } else if (hexNumber.equals("0111")) {
+                result = result + "7";
+                break;
+            } else if (hexNumber.equals("1000")) {
+                result = result + "8";
+                break;
+            } else if (hexNumber.equals("1001")) {
+                result = result + "9";
+
+            } else if (hexNumber.equals("1010")) {
+                result = result + "a";
+
+            } else if (hexNumber.equals("1011")) {
+                result = result + "b";
+
+            } else if (hexNumber.equals("1100")) {
+                result = result + "c";
+
+            } else if (hexNumber.equals("1101")) {
+                result = result + "d";
+
+            } else if (hexNumber.equals("1110")) {
+                result = result + "e";
+
+            } else if (hexNumber.equals("1111")) {
+                result = result + "f";
+
+            } else {
+                break;
+            }
+
+        }
+
+        return result;
+    }
+
+
+    public static String toBinary(String hexNumber) {
+        String binaryNumber = "";
+        if (hexNumber == null)
+            return binaryNumber;
+        if (hexNumber.matches("(?i).*[g-zа-я].*"))
+            return binaryNumber;
+        StringBuffer sb = new StringBuffer();
+
+        for (int i = 0; i < hexNumber.length(); i++) {
+            String added = null;
+            if (hexNumber.charAt(i) == '0') {
+                added = "0000";
+            } else if (hexNumber.charAt(i) == '1') {
+                added = "0001";
+            } else if (hexNumber.charAt(i) == '2') {
+                added = "0010";
+            } else if (hexNumber.charAt(i) == '3') {
+                added = "0011";
+            } else if (hexNumber.charAt(i) == '4') {
+                added = "0100";
+            } else if (hexNumber.charAt(i) == '5') {
+                added = "0101";
+            } else if (hexNumber.charAt(i) == '6') {
+                added = "0110";
+            } else if (hexNumber.charAt(i) == '7') {
+                added = "0111";
+            } else if (hexNumber.charAt(i) == '8') {
+                added = "1000";
+            } else if (hexNumber.charAt(i) == '9') {
+                added = "1001";
+            } else if (hexNumber.charAt(i) == 'a') {
+                added = "1010";
+            } else if (hexNumber.charAt(i) == 'b') {
+                added = "1011";
+            } else if (hexNumber.charAt(i) == 'c') {
+                added = "1100";
+            } else if (hexNumber.charAt(i) == 'd') {
+                added = "1101";
+            } else if (hexNumber.charAt(i) == 'e') {
+                added = "1110";
+            } else if (hexNumber.charAt(i) == 'f') {
+                added = "1111";
+            }
+            sb.append(added);
+        }
+
+        return sb.toString();
+    }
+}
