@@ -1,0 +1,20 @@
+package com.javarush.task.pro.task10.task1016;
+
+/* 
+Прогноз погоды
+*/
+
+public class Solution {
+
+    public static void showWeather(City city) {
+        String nameCity = city.getName();
+        int cityTemp = city.getTemperature();
+        System.out.println("В городе " + nameCity + " сегодня температура воздуха " + cityTemp);
+
+    }
+
+    public static void main(String[] args) {
+        City city = new City("Дубай", 17);
+        showWeather(city);
+    }
+}
